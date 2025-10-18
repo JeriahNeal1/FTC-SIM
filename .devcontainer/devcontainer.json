@@ -1,0 +1,32 @@
+{
+  "name": "FTC-SIM (Unity 6 workspace)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" },
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
+    "ghcr.io/devcontainers/features/dotnet:2": { "version": "8.0" }
+  },
+  "postCreateCommand": "git lfs install && git config --global core.autocrlf input",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.vscode-github-actions",
+        "ms-dotnettools.csharp",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.powershell",
+        "ms-python.python",
+        "redhat.vscode-yaml",
+        "ms-vscode.cpptools",
+        "Unity.unity-debug"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "csharp.format.enable": true
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "hostRequirements": { "cpus": 4, "memory": "8gb", "storage": "32gb" }
+}
