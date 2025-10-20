@@ -1,5 +1,6 @@
 using UnityEngine;
 using FTCSim.Core.Data;
+using System.IO;
 
 namespace FTCSim.Core.Services
 {
@@ -8,14 +9,27 @@ namespace FTCSim.Core.Services
     /// </summary>
     public class SaveLoadService : MonoBehaviour
     {
-        public void SaveRobot(string filePath, ElectroGraphData electroGraphData)
+        public void SaveRobot(string filePath, RobotData robotData)
         {
-            // TODO: Serialize assembly and electrograph data to a JSON file.
+            string json = JsonUtility.ToJson(robotData, true);
+            File.WriteAllText(filePath, json);
+            Debug.Log($"Robot saved to {filePath}");
         }
 
-        public void LoadRobot(string filePath)
+        public RobotData LoadRobot(string filePath)
         {
-            // TODO: Deserialize robot data from JSON and reconstruct the robot.
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                RobotData robotData = JsonUtility.FromJson<RobotData>(json);
+                Debug.Log($"Robot loaded from {filePath}");
+                return robotData;
+            }
+            else
+            {
+                Debug.LogError($"Save file not found at {filePath}");
+                return null;
+            }
         }
     }
 }
