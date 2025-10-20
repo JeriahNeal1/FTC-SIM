@@ -3,6 +3,21 @@ using System.Collections.Generic;
 
 namespace FTCSim.Core.Data
 {
+    [System.Serializable]
+    public class MountData
+    {
+        // Placeholder for mount point data (e.g., position, rotation, pattern type)
+        public Vector3 position;
+        public Quaternion rotation;
+        public string pattern;
+    }
+
+    [System.Serializable]
+    public class RuleData
+    {
+        public List<string> validMates;
+    }
+    
     /// <summary>
     /// Represents the data-driven definition for a single robot part, based on the PartDefinition.json schema.
     /// </summary>
@@ -14,6 +29,7 @@ namespace FTCSim.Core.Data
         public string displayName;
         public string category;
         public float mass;
-        // TODO: Define and add Mounts, Colliders, Rules, etc.
+        public List<MountData> mounts = new List<MountData>();
+        public RuleData rules;
     }
 }

@@ -4,11 +4,18 @@ using System.Collections.Generic;
 namespace FTCSim.Core.Data
 {
     [System.Serializable]
+    public class PinData
+    {
+        public string id;
+        public string role; // e.g., PWR, GND, SIGNAL, BUS
+    }
+
+    [System.Serializable]
     public class ElectroGraphNode
     {
         public string id;
         public string type;
-        // TODO: Add Pin definitions
+        public List<PinData> pins = new List<PinData>();
     }
 
     [System.Serializable]
