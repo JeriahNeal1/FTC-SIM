@@ -104,5 +104,19 @@ namespace FTCSIM.Parts
             parts.Clear();
             categorizedParts.Clear();
         }
+        
+        /// <summary>
+        /// Add a single part to the library.
+        /// </summary>
+        public void AddPart(PartDefinition part)
+        {
+            if (part == null || string.IsNullOrEmpty(part.sku))
+            {
+                Debug.LogWarning("Cannot add invalid part to library");
+                return;
+            }
+            
+            RegisterPart(part);
+        }
     }
 }

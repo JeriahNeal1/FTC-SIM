@@ -85,16 +85,12 @@ namespace FTCSIM.UI
             
             // Try to get actual values from telemetry
             var latestData = telemetry.GetLatestData();
-            if (latestData != null && latestData.ContainsKey("voltage"))
+            if (latestData != null)
             {
-                voltage = (float)latestData["voltage"];
+                voltage = latestData.voltage;
+                current = latestData.current;
+                power = latestData.power;
             }
-            if (latestData != null && latestData.ContainsKey("current"))
-            {
-                current = (float)latestData["current"];
-            }
-            
-            power = voltage * current;
             
             // Update voltage text
             if (voltageText != null)
