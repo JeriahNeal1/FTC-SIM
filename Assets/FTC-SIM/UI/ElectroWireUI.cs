@@ -9,7 +9,7 @@ namespace FTCSIM.UI
     /// </summary>
     public class ElectroWireUI : MonoBehaviour
     {
-        public Image lineImage;
+        public Image wireLineImage;
         
         private ElectroWire electroWire;
         private GameObject nodeAUI;
@@ -27,9 +27,9 @@ namespace FTCSIM.UI
             nodeAUI = nodeA;
             nodeBUI = nodeB;
             
-            if (lineImage != null)
+            if (wireLineImage != null)
             {
-                lineImage.color = GetWireColor(wire.type);
+                wireLineImage.color = GetWireColor(wire.type);
             }
             
             UpdatePosition();

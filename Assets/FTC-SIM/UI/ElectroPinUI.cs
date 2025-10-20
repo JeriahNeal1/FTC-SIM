@@ -12,7 +12,7 @@ namespace FTCSIM.UI
     public class ElectroPinUI : MonoBehaviour, IPointerClickHandler
     {
         public TMP_Text pinNameText;
-        public Image pinColorImage;
+        public Image pinIndicator;
         
         private ElectroPin electroPin;
         private ElectroNode parentNode;
@@ -29,9 +29,9 @@ namespace FTCSIM.UI
                 pinNameText.text = pin.id;
             }
             
-            if (pinColorImage != null)
+            if (pinIndicator != null)
             {
-                pinColorImage.color = GetPinColor(pin.role);
+                pinIndicator.color = GetPinColor(pin.role);
             }
         }
         
