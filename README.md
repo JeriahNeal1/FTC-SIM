@@ -6,6 +6,13 @@ FTC-SIM is an interactive robot-building game where players can design, wire, pr
 
 ## 🎯 Features
 
+### 🎨 In-Game Drag-and-Drop Builder (NEW!)
+- **Three-Panel Layout**: Parts catalog (left), 3D preview (center), properties (right)
+- **Visual Snapping**: Color-coded indicators show valid attachment points
+- **Real-Time Configuration**: Adjust motor speeds and servo settings on the fly
+- **Search & Filter**: Find parts quickly with search and category filtering
+- **One-Click Setup**: Automated scene setup with `CompleteSceneSetup` script
+
 ### 🔩 Assembly System
 - **goBILDA Native**: Accurate hole-pattern snapping and geometry
 - **Infinite Nesting**: No hardcoded mechanisms - everything is modular
@@ -13,7 +20,8 @@ FTC-SIM is an interactive robot-building game where players can design, wire, pr
 - **DAG Architecture**: Hierarchical assembly graph with cycle detection
 
 ### ⚡ ElectroGraph Electronics
-- **Node-Based Wiring**: Visual editor for electronics connections
+- **Visual Node Editor**: Drag-and-drop electronics wiring interface
+- **Color-Coded Pins**: PWR (red), GND (black), SIGNAL (blue), BUS (cyan)
 - **Real-Time Validation**: Short circuit detection, overcurrent protection
 - **Co-Simulation**: Physics and electronics simulate together
 - **Power Modeling**: Voltage sag, wire resistance, back-EMF
@@ -25,7 +33,9 @@ FTC-SIM is an interactive robot-building game where players can design, wire, pr
 - **Fixed Timestep**: 0.5-1ms for stable contact and control
 
 ### 📊 Telemetry & Data
-- **Real-Time Charts**: Voltage, current, RPM, temperature
+- **Real-Time Monitoring**: Voltage, current, power, temperature displays
+- **Battery Visualization**: Color-coded battery level indicator
+- **Per-Motor Telemetry**: RPM and torque for each motor
 - **CSV Export**: Replayable runs and data analysis
 - **Save/Load**: Complete robot assemblies with versioning
 
@@ -42,7 +52,15 @@ FTC-SIM is an interactive robot-building game where players can design, wire, pr
 3. Load the main scene: `Assets/OutdoorsScene.unity`
 4. Press Play to start the simulation
 
-### Quick Start
+### Quick Start (Automated UI Setup)
+
+**Option 1: Automatic Setup (2 minutes)**
+1. Create empty GameObject in your scene
+2. Add `CompleteSceneSetup` component
+3. Right-click component → "Setup Complete Scene"
+4. Press Play to start building!
+
+**Option 2: Code Setup**
 ```csharp
 // Get robot controller
 var controller = FindObjectOfType<RobotController>();
@@ -54,6 +72,8 @@ PartsLibrary.Instance.LoadPartsFromDirectory("StreamingAssets/Parts");
 controller.StartSimulation();
 ```
 
+**See detailed setup instructions in**: `Assets/FTC-SIM/Documentation/QUICK_START_USER_GUIDE.md`
+
 ## 📦 Project Structure
 
 ```
@@ -64,8 +84,12 @@ Assets/FTC-SIM/
 ├── Electronics/       # ElectroGraph system
 ├── Physics/           # Physics bridge to Unity
 ├── Snapping/          # goBILDA snapping service
+├── UI/                # In-game builder UI components
+│   └── PrefabCreators/  # UI prefab generation scripts
+├── Editor/            # Unity Editor custom windows
+├── Examples/          # Working examples and setup scripts
 ├── Data/              # Save/load and JSON schemas
-└── Documentation/     # Architecture and API docs
+└── Documentation/     # Architecture, setup guides, and API docs
 ```
 
 ## 🧩 Core Systems
@@ -96,26 +120,44 @@ Connects assembly graph to Unity ArticulationBodies:
 
 ## 📖 Documentation
 
+### Getting Started
+- [Quick Start User Guide](Assets/FTC-SIM/Documentation/QUICK_START_USER_GUIDE.md) - **Start Here!**
+- [UI Builder Setup Guide](Assets/FTC-SIM/Documentation/UI_BUILDER_SETUP_GUIDE.md) - Detailed setup instructions
+- [In-Game Builder Guide](Assets/FTC-SIM/Documentation/IN_GAME_BUILDER_GUIDE.md) - How to use the builder
+
+### Technical Documentation
 - [Architecture Overview](Assets/FTC-SIM/Documentation/ARCHITECTURE.md)
+- [Getting Started (API)](Assets/FTC-SIM/Documentation/GETTING_STARTED.md)
+- [Unity Editor Guide](Assets/FTC-SIM/Documentation/UNITY_EDITOR_GUIDE.md)
+- [UI/UX Implementation Summary](Assets/FTC-SIM/Documentation/UI_UX_IMPLEMENTATION_SUMMARY.md)
+
+### Examples & Schemas
 - [Part Definition Schema](Assets/FTC-SIM/Data/Schemas/)
 - [ElectroGraph Examples](Assets/FTC-SIM/Data/Schemas/ExampleElectroGraph.json)
+- [Complete Scene Setup Script](Assets/FTC-SIM/Examples/CompleteSceneSetup.cs)
 
 ## 🎮 Roadmap
 
-### ✅ Vertical Slice (Current)
+### ✅ Vertical Slice + UI/UX (Current - v0.6)
 - Core architecture implemented
 - Assembly graph with snapping
-- ElectroGraph MVP
+- ElectroGraph visual node editor
 - Physics bridge with ArticulationBodies
 - Save/load system
+- **In-game drag-and-drop builder UI**
+- **Three-panel layout (catalog, preview, properties)**
+- **Motor and servo configuration controls**
+- **Real-time telemetry visualization**
+- **Automated scene setup system**
 
 ### 🔜 Beta (v0.8)
-- [ ] Expanded goBILDA library
+- [ ] Expanded goBILDA library (50+ parts)
+- [ ] 3D CAD model integration
 - [ ] Belt/chain simulation
 - [ ] IMU and encoder sensors
 - [ ] Thermal modeling
 - [ ] Block-based logic editor
-- [ ] Unity Editor UI tools
+- [ ] Undo/redo system
 
 ### 🎯 v1.0
 - [ ] Complete goBILDA catalog
