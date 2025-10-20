@@ -21,6 +21,7 @@ namespace FTCSIM.Core
         public SnappingService snappingService;
         public PartsLibrary partsLibrary;
         public DataPersistence dataPersistence;
+        public TelemetrySystem telemetrySystem;
         
         [Header("Simulation Settings")]
         public bool isSimulating = false;
@@ -70,6 +71,13 @@ namespace FTCSIM.Core
                 GameObject dataObj = new GameObject("DataPersistence");
                 dataObj.transform.SetParent(transform);
                 dataPersistence = dataObj.AddComponent<DataPersistence>();
+            }
+            
+            if (telemetrySystem == null)
+            {
+                GameObject telemetryObj = new GameObject("TelemetrySystem");
+                telemetryObj.transform.SetParent(transform);
+                telemetrySystem = telemetryObj.AddComponent<TelemetrySystem>();
             }
             
             // Initialize systems

@@ -149,5 +149,27 @@ namespace FTCSIM.Assembly
             node.mass = totalMass;
             node.centerOfMass = totalMass > 0 ? weightedCOM / totalMass : Vector3.zero;
         }
+        
+        /// <summary>
+        /// Get all nodes in the assembly graph as a flat list.
+        /// </summary>
+        public List<AssemblyNode> GetAllNodes()
+        {
+            List<AssemblyNode> allNodes = new List<AssemblyNode>();
+            if (rootNode != null)
+            {
+                CollectNodesRecursive(rootNode, allNodes);
+            }
+            return allNodes;
+        }
+        
+        private void CollectNodesRecursive(AssemblyNode node, List<AssemblyNode> collection)
+        {
+            collection.Add(node);
+            foreach (var child in node.children)
+            {
+                CollectNodesRecursive(child, collection);
+            }
+        }
     }
 }
