@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "battery_main",
+      "type": "Battery",
+      "pins": [
+        {
+          "id": "pos",
+          "role": "PWR",
+          "voltage": 12.0,
+          "current": 0.0,
+          "maxCurrent": 20.0
+        },
+        {
+          "id": "neg",
+          "role": "GND",
+          "voltage": 0.0,
+          "current": 0.0,
+          "maxCurrent": 20.0
+        }
+      ],
+      "graphPosition": { "x": 100.0, "y": 100.0 }
+    },
+    {
+      "id": "hub_expansion",
+      "type": "Hub",
+      "pins": [
+        {
+          "id": "pwr_in",
+          "role": "PWR",
+          "voltage": 12.0,
+          "current": 0.0,
+          "maxCurrent": 15.0
+        },
+        {
+          "id": "gnd_in",
+          "role": "GND",
+          "voltage": 0.0,
+          "current": 0.0,
+          "maxCurrent": 15.0
+        },
+        {
+          "id": "motor_0_plus",
+          "role": "PWR",
+          "voltage": 12.0,
+          "current": 0.0,
+          "maxCurrent": 10.0
+        },
+        {
+          "id": "motor_0_minus",
+          "role": "PWR",
+          "voltage": 0.0,
+          "current": 0.0,
+          "maxCurrent": 10.0
+        }
+      ],
+      "graphPosition": { "x": 300.0, "y": 100.0 }
+    },
+    {
+      "id": "motor_left",
+      "type": "DCMotor",
+      "pins": [
+        {
+          "id": "plus",
+          "role": "PWR",
+          "voltage": 0.0,
+          "current": 0.0,
+          "maxCurrent": 10.0
+        },
+        {
+          "id": "minus",
+          "role": "PWR",
+          "voltage": 0.0,
+          "current": 0.0,
+          "maxCurrent": 10.0
+        }
+      ],
+      "graphPosition": { "x": 500.0, "y": 100.0 }
+    }
+  ],
+  "wires": [
+    {
+      "id": "wire_battery_hub_pwr",
+      "type": "Power",
+      "a": { "nodeId": "battery_main", "pinId": "pos" },
+      "b": { "nodeId": "hub_expansion", "pinId": "pwr_in" },
+      "awg": 14,
+      "resistance": 0.00826
+    },
+    {
+      "id": "wire_battery_hub_gnd",
+      "type": "Ground",
+      "a": { "nodeId": "battery_main", "pinId": "neg" },
+      "b": { "nodeId": "hub_expansion", "pinId": "gnd_in" },
+      "awg": 14,
+      "resistance": 0.00826
+    },
+    {
+      "id": "wire_hub_motor_plus",
+      "type": "Power",
+      "a": { "nodeId": "hub_expansion", "pinId": "motor_0_plus" },
+      "b": { "nodeId": "motor_left", "pinId": "plus" },
+      "awg": 18,
+      "resistance": 0.02089
+    },
+    {
+      "id": "wire_hub_motor_minus",
+      "type": "Power",
+      "a": { "nodeId": "hub_expansion", "pinId": "motor_0_minus" },
+      "b": { "nodeId": "motor_left", "pinId": "minus" },
+      "awg": 18,
+      "resistance": 0.02089
+    }
+  ]
+}

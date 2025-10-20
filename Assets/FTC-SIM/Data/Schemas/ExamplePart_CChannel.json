@@ -1,0 +1,39 @@
+{
+  "sku": "GB-1120-288-xxx",
+  "vendor": "goBILDA",
+  "displayName": "C-Channel 1120 x 288mm",
+  "category": "Structural",
+  "mass": 0.432,
+  "prefabPath": "Parts/Structural/CChannel_1120_288",
+  "mounts": [
+    {
+      "id": "mount_0",
+      "pattern": "Pattern:goBILDA-16mm",
+      "localPosition": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "localRotation": { "x": 0.0, "y": 0.0, "z": 0.0, "w": 1.0 },
+      "tolerance": 0.001,
+      "compatiblePatterns": ["Pattern:goBILDA-16mm"]
+    },
+    {
+      "id": "mount_1",
+      "pattern": "Pattern:goBILDA-16mm",
+      "localPosition": { "x": 0.016, "y": 0.0, "z": 0.0 },
+      "localRotation": { "x": 0.0, "y": 0.0, "z": 0.0, "w": 1.0 },
+      "tolerance": 0.001,
+      "compatiblePatterns": ["Pattern:goBILDA-16mm"]
+    }
+  ],
+  "rotationalMounts": [],
+  "colliders": [
+    {
+      "source": "convexHull",
+      "margin": 0.002
+    }
+  ],
+  "rules": {
+    "validMates": ["Pattern:goBILDA-16mm"],
+    "maxLoad": 5000.0,
+    "maxTorque": 500.0
+  },
+  "electronicsProfile": null
+}
