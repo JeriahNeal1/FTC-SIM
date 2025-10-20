@@ -1,0 +1,59 @@
+{
+  "sku": "GB-YJ-3530-5201-xxx",
+  "vendor": "goBILDA",
+  "displayName": "5202 Series Yellow Jacket Motor",
+  "category": "Actuators",
+  "mass": 0.250,
+  "prefabPath": "Parts/Motors/YellowJacket_5202",
+  "mounts": [
+    {
+      "id": "mount_body",
+      "pattern": "Pattern:goBILDA-16mm",
+      "localPosition": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "localRotation": { "x": 0.0, "y": 0.0, "z": 0.0, "w": 1.0 },
+      "tolerance": 0.001,
+      "compatiblePatterns": ["Pattern:goBILDA-16mm"]
+    }
+  ],
+  "rotationalMounts": [
+    {
+      "id": "shaft_output",
+      "mountType": "Shaft-6mm",
+      "localPosition": { "x": 0.0, "y": 0.0, "z": 0.04 },
+      "axis": { "x": 0.0, "y": 0.0, "z": 1.0 },
+      "diameter": 0.006,
+      "length": 0.020,
+      "canDrive": true
+    }
+  ],
+  "colliders": [
+    {
+      "source": "box",
+      "margin": 0.001
+    }
+  ],
+  "rules": {
+    "validMates": ["Pattern:goBILDA-16mm", "Shaft-6mm"],
+    "maxLoad": 1000.0,
+    "maxTorque": 50.0
+  },
+  "electronicsProfile": {
+    "deviceType": "DCMotor",
+    "pins": [
+      {
+        "id": "motor_plus",
+        "role": "PWR",
+        "voltage": 12.0,
+        "maxCurrent": 10.0
+      },
+      {
+        "id": "motor_minus",
+        "role": "PWR",
+        "voltage": 0.0,
+        "maxCurrent": 10.0
+      }
+    ],
+    "voltage": 12.0,
+    "currentDraw": 5.0
+  }
+}
